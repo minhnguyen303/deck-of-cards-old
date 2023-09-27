@@ -57,6 +57,19 @@ body {
   background-color: #fff;
   color: #444;
 }
+#scorebar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #334d41;
+  padding: 0.25rem;
+  text-align: center;
+}
+#scorebar > div {
+  display: inline-block;
+  color: #fff;
+}
 .message {
   position: fixed;
   top: 2.5rem;

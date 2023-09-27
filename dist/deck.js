@@ -1,5 +1,21 @@
 'use strict';
 
+var win = 0,
+  lose = 0;
+
+function updateScore(score) {
+  if (score > 0) {
+    win++;
+  } else {
+    lose++;
+  }
+  var winEl = document.getElementById('win'),
+    loseEl = document.getElementById('lose');
+
+  winEl.innerText = win;
+  loseEl.innerText = lose;
+}
+
 var Deck = (function () {
   'use strict';
 
@@ -157,9 +173,12 @@ var Deck = (function () {
     var transform = prefix('transform');
 
     // calculate rank/suit, etc..
-    var rank = i % 13 + 1;
-    var suit = i / 13 | 0;
-    var z = (52 - i) / 4;
+    var rank = 1;
+    // var rank = i % 13 + 1;
+    var suit = i;
+    // var suit = i / 13 | 0;
+    var z = i;
+    // var z = (52 - i) / 4;
 
     // create elements
     var $el = createElement('div');
@@ -342,6 +361,7 @@ var Deck = (function () {
         if (isFlippable && Date.now() - starttime < 200) {
           // flip sides
           self.setSide(self.side === 'front' ? 'back' : 'front');
+          console.log(1);
         }
         if (e.type === 'mouseup') {
           removeListener(window, 'mousemove', onMousemove);
@@ -923,7 +943,8 @@ var Deck = (function () {
 
   function Deck(jokers) {
     // init cards array
-    var cards = new Array(jokers ? 55 : 52);
+    // var cards = new Array(jokers ? 55 : 52);
+    var cards = new Array(4);
 
     var $el = createElement('div');
     var self = observable({ mount: mount, unmount: unmount, cards: cards, $el: $el });
